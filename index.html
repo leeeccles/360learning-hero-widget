@@ -19,7 +19,7 @@
       background: transparent;
       color: #1a1a2e;
       -webkit-font-smoothing: antialiased;
-      padding: 4px 16px 24px 0;
+      padding: 4px 12px 8px 0;
       overflow: hidden;
     }
 
@@ -27,15 +27,21 @@
       display: grid;
       grid-template-columns: 3fr 2fr;
       column-gap: 48px;
-      align-items: stretch;
+      height: 340px;
     }
 
     /* LEFT */
     .hero-left {
       display: flex;
       flex-direction: column;
-      gap: 16px;
       min-width: 0;
+      height: 100%;
+    }
+
+    /* Pushes contributor stream to the bottom, absorbs leftover space */
+    .hero-spacer {
+      flex: 1;
+      min-height: 12px;
     }
 
     h1 {
@@ -251,9 +257,8 @@
       margin-top: 1px;
     }
 
-    .benefit-icon.speed    { background: #e8faf4; }
-    .benefit-icon.relevant { background: #fef3e2; }
-    .benefit-icon.social   { background: #eef2ff; }
+    .benefit-icon.speed  { background: #e8faf4; }
+    .benefit-icon.social { background: #eef2ff; }
 
     .benefit-headline {
       font-size: 13.5px;
@@ -304,6 +309,8 @@
         </div>
       </div>
 
+      <div class="hero-spacer"></div>
+
       <div>
         <p class="proof-point"><strong>73%</strong> of learning content created by employees</p>
         <div class="stream-viewport">
@@ -325,14 +332,6 @@
               <span class="quote">"How do we handle pricing objections?"</span>
               <span class="meta">→ Turned into a course by Tom W. <span>Used by 86 teammates this week</span></span>
             </p>
-          </div>
-        </div>
-
-        <div class="benefit">
-          <div class="benefit-icon relevant">🎯</div>
-          <div>
-            <p class="benefit-headline">Learn what actually works here</p>
-            <p class="benefit-content">Courses built from real deals, projects, and experiences — not generic training.</p>
           </div>
         </div>
 
