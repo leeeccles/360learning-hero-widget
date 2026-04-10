@@ -390,23 +390,6 @@
 
   const track = document.getElementById('streamTrack');
   track.innerHTML = [...contributors, ...contributors].map(buildCard).join('');
-
-  // Report height to parent so the iframe resizes automatically
-  function postHeight() {
-    window.parent.postMessage(
-      { type: 'widget-resize', height: document.body.scrollHeight },
-      '*'
-    );
-  }
-
-  window.addEventListener('load', postHeight);
-
-  // Re-report when iframe width changes (text reflows → different height)
-  if (window.ResizeObserver) {
-    new ResizeObserver(postHeight).observe(document.body);
-  } else {
-    window.addEventListener('resize', postHeight);
-  }
 </script>
 
 </body>
