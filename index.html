@@ -27,16 +27,15 @@
       display: grid;
       grid-template-columns: 3fr 2fr;
       column-gap: 48px;
-      height: 400px;
+      align-items: stretch;
     }
 
     /* LEFT */
     .hero-left {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 28px;
       min-width: 0;
-      height: 100%;
     }
 
     h1 {
@@ -204,7 +203,6 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      height: 100%;
     }
 
     .benefits-label {
@@ -220,7 +218,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      flex: 1;
     }
 
     .benefit {
@@ -231,7 +228,6 @@
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
-      flex: 1;
       transition: box-shadow 0.2s, transform 0.15s;
     }
 
