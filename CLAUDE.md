@@ -48,20 +48,20 @@ Everything lives in `index.html`: HTML structure, CSS `<style>` block, and a sma
 .lw_hero_widget {
   border: none;
   width: 100%;
-  height: 335px;
+  height: 341px;
   display: block;
   background: transparent;
 }
 </style>
 ```
 
-Adjust `height` in the embed if widget content changes. Rule of thumb: `hero-inner` height + 4px (body top padding) + 8px (body bottom padding) + ~3px buffer.
+Adjust `height` in the embed if widget content changes. Rule of thumb: `hero-inner` height + 4px (body top padding) + 14px (body bottom padding) + ~3px buffer.
 
 ## Key constraints to preserve
 
 - `html, body` must stay `background: transparent` — the widget sits on the platform's own background
 - `overflow: hidden` on `body` (not `html`) prevents scrollbars without clipping card shadows
-- `body` padding (`4px 12px 8px 0`) gives card shadows breathing room — remove it and shadows clip
+- `body` padding (`4px 12px 14px 0`) gives card shadows breathing room — remove it and shadows clip. The 14px bottom padding is intentional: hover shadow needs ~11px clearance (2px Y offset + 8px blur + 1px translateY)
 - `min-width: 0` on both grid children prevents content from blowing out column widths
 - No `aspect-ratio` on the iframe — our widget has fixed-height content, not aspect-ratio-driven content, so it gives wrong heights at different widths
 - No responsive breakpoints that stack columns — keep two columns at all widths
