@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360Learning – Hero Widget</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: transparent;
+      color: #1a1a2e;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      column-gap: 48px;
+      height: 360px;
+    }
+
+    /* LEFT */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #111827;
+      letter-spacing: -0.4px;
+      margin-bottom: 14px;
+    }
+
+    h1 .highlight {
+      color: #00b28a;
+    }
+
+    .sub-copy {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #00b28a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #009e7a; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #00b28a;
+      border: 1.5px solid #00b28a;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: #f0fdf8; transform: translateY(-1px); }
+
+    /* Contributor stream */
+    .proof-point {
+      font-size: 11.5px;
+      color: #9ca3af;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+
+    .proof-point strong {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    .stream-viewport {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .stream-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scrollLeft 55s linear infinite;
+      padding: 6px 0 20px;
+    }
+
+    .stream-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .contributor-card {
+      background: #ffffff;
+      border: 1px solid #f0f0f3;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+      min-width: 200px;
+      max-width: 230px;
+      cursor: default;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contributor-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .contributor-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px white, 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .contributor-info {
+      min-width: 0;
+    }
+
+    .contributor-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contributor-dept {
+      font-size: 11.5px;
+      color: #9ca3af;
+      margin-top: 1px;
+      white-space: nowrap;
+    }
+
+    .contributor-stat {
+      font-size: 11.5px;
+      color: #6b7280;
+      margin-top: 5px;
+      white-space: nowrap;
+    }
+
+    .contributor-badge {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    /* RIGHT – Benefits */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .benefits-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .benefit {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+      flex: 1;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .benefit:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05);
+      transform: translateY(-1px);
+    }
+
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .benefit-icon.speed    { background: #e8faf4; }
+    .benefit-icon.relevant { background: #fef3e2; }
+    .benefit-icon.social   { background: #eef2ff; }
+
+    .benefit-headline {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .benefit-content {
+      font-size: 12.5px;
+      color: #6b7280;
+      line-height: 1.55;
+    }
+
+    .benefit-content .quote {
+      color: #374151;
+      font-style: italic;
+    }
+
+    .benefit-content .meta {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .benefit-content .meta span {
+      color: #00b28a;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        height: auto;
+        row-gap: 32px;
+      }
+      .hero-left, .hero-right { height: auto; }
+      .benefits { flex: none; }
+      .benefit { flex: none; }
+    }
+
+    @media (max-width: 520px) {
+      .cta-group { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<section aria-label="Hero banner">
+  <div class="hero-inner">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div>
+        <h1>The fastest way to grow here? <span class="highlight">Each other.</span></h1>
+        <p class="sub-copy">Your colleagues are sitting on a goldmine of real-world knowledge. This is where they share it.</p>
+        <div class="cta-group">
+          <a class="btn-primary" href="https://app.360learning.com/course/play/69d8d6d9e78218231e4b35ef" target="_blank" rel="noopener">Share your expertise</a>
+          <a class="btn-secondary" href="https://app.360learning.com/course/play/69d8d670e5bb889a235d28d2" target="_blank" rel="noopener">Take a 2-min tour</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="proof-point"><strong>73%</strong> of learning content created by employees</p>
+        <div class="stream-viewport">
+          <div class="stream-track" id="streamTrack"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <p class="benefits-label">What you can do here</p>
+      <div class="benefits">
+
+        <div class="benefit">
+          <div class="benefit-icon speed">⚡</div>
+          <div>
+            <p class="benefit-headline">Get help when you need it</p>
+            <p class="benefit-content">
+              <span class="quote">"How do we handle pricing objections?"</span>
+              <span class="meta">→ Turned into a course by Tom W. <span>Used by 86 teammates this week</span></span>
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon relevant">🎯</div>
+          <div>
+            <p class="benefit-headline">Learn what actually works here</p>
+            <p class="benefit-content">Courses built from real deals, projects, and experiences — not generic training.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-icon social">🤝</div>
+          <div>
+            <p class="benefit-headline">Learn from people across the company</p>
+            <p class="benefit-content">Sales, Product, CS, Engineering… sharing what works in their day-to-day.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const contributors = [
+    { img: 'Female 1.png', name: 'Sarah R.',  dept: 'Sales',            courses: 9, badge: '🧠 Top contributor' },
+    { img: 'Male 1.png',   name: 'Marcus T.', dept: 'Engineering',      courses: 8, badge: null },
+    { img: 'Female 2.png', name: 'Aisha L.',  dept: 'Customer Success', courses: 6, badge: '🔥 Trending' },
+    { img: 'Male 3.png',   name: 'David P.',  dept: 'Product',          courses: 5, badge: null },
+    { img: 'Female 6.png', name: 'Rachel K.', dept: 'Marketing',        courses: 4, badge: null },
+    { img: 'Male 5.png',   name: 'James H.',  dept: 'Ops',              courses: 5, badge: '💬 12 answers this week' },
+    { img: 'Female 3.png', name: 'Priya N.',  dept: 'Engineering',      courses: 3, badge: null },
+    { img: 'Male 2.png',   name: 'Tom W.',    dept: 'Sales',            courses: 2, badge: null },
+    { img: 'Female 4.png', name: 'Carmen V.', dept: 'Customer Success', courses: 3, badge: '🔥 Trending' },
+    { img: 'Male 4.png',   name: 'Ben S.',    dept: 'HR / People',      courses: 3, badge: null },
+    { img: 'Female 7.png', name: 'Diana B.',  dept: 'Legal',            courses: 2, badge: null },
+    { img: 'Male 6.png',   name: 'Alex R.',   dept: 'Finance',          courses: 3, badge: null },
+    { img: 'Female 5.png', name: 'Jen K.',    dept: 'HR / People',      courses: 1, badge: null },
+    { img: 'Female 8.png', name: 'Nadia C.',  dept: 'Marketing',        courses: 1, badge: null },
+    { img: 'Male 7.png',   name: 'Chris D.',  dept: 'Product',          courses: 1, badge: null },
+    { img: 'Male 8.png',   name: 'Ryan L.',   dept: 'Engineering',      courses: 1, badge: null },
+  ];
+
+  function buildCard(c) {
+    const stat = c.courses === 1 ? '1 course created' : `${c.courses} courses created`;
+    return `
+      <div class="contributor-card">
+        <img class="contributor-avatar"
+             src="Circle Headshots copy/${c.img}"
+             alt="${c.name}"
+             loading="lazy"
+             onerror="this.style.display='none'">
+        <div class="contributor-info">
+          <p class="contributor-name">${c.name}</p>
+          <p class="contributor-dept">${c.dept}</p>
+          <p class="contributor-stat">${stat}</p>
+          ${c.badge ? `<p class="contributor-badge">${c.badge}</p>` : ''}
+        </div>
+      </div>`;
+  }
+
+  const track = document.getElementById('streamTrack');
+  track.innerHTML = [...contributors, ...contributors].map(buildCard).join('');
+</script>
+
+</body>
+</html>
