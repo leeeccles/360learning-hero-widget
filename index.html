@@ -27,7 +27,7 @@
       display: grid;
       grid-template-columns: 3fr 2fr;
       column-gap: 48px;
-      height: 340px;
+      height: 320px;
     }
 
     /* LEFT */
@@ -128,7 +128,7 @@
       gap: 16px;
       width: max-content;
       animation: scrollLeft 55s linear infinite;
-      padding: 6px 0 20px;
+      padding: 6px 0 10px;
     }
 
     .stream-track:hover {
@@ -230,14 +230,20 @@
 
     .benefit {
       display: flex;
-      gap: 14px;
-      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
       padding: 16px 18px;
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
-      flex: 1; /* each card takes an equal share of the column */
+      flex: 1;
       transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .benefit-inner {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
     }
 
     .benefit:hover {
@@ -325,21 +331,25 @@
       <div class="benefits">
 
         <div class="benefit">
-          <div class="benefit-icon speed">⚡</div>
-          <div>
-            <p class="benefit-headline">Get help when you need it</p>
-            <p class="benefit-content">
-              <span class="quote">"How do we handle pricing objections?"</span>
-              <span class="meta">→ Turned into a course by Tom W. <span>Used by 86 teammates this week</span></span>
-            </p>
+          <div class="benefit-inner">
+            <div class="benefit-icon speed">⚡</div>
+            <div>
+              <p class="benefit-headline">Get help when you need it</p>
+              <p class="benefit-content">
+                <span class="quote">"How do we handle pricing objections?"</span>
+                <span class="meta">→ Turned into a course by Tom W. <span>Used by 86 teammates this week</span></span>
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="benefit">
-          <div class="benefit-icon social">🤝</div>
-          <div>
-            <p class="benefit-headline">Learn from people across the company</p>
-            <p class="benefit-content">Sales, Product, CS, Engineering… sharing what works in their day-to-day.</p>
+          <div class="benefit-inner">
+            <div class="benefit-icon social">🤝</div>
+            <div>
+              <p class="benefit-headline">Learn from people across the company</p>
+              <p class="benefit-content">Sales, Product, CS, Engineering… sharing what works in their day-to-day.</p>
+            </div>
           </div>
         </div>
 
